@@ -1,0 +1,64 @@
+{% extends 'main.html' %}
+
+
+{% block content %}
+<main class="home">
+    <section class="hero-section text-center">
+        <div class="container container--narrow">
+            <div class="hero-section__box">
+                <h2>O'QUV MARKAZ<span> BITIRUVCHILARINI </span> QIDIRIB TOP</h2>
+
+            </div>
+
+            <div class="hero-section__search">
+                <form class="form" action="#" method="get">
+                    <div class="form__field">
+                        <label for="formInput#search">Bitiruvchilarni top </label>
+                        <input class="input input--text" id="formInput#search" type="text" name="search_query"
+                            placeholder="Bitiruvchi ismi bilan top" />
+                    </div>
+
+                    <input class="btn btn--sub btn--lg" type="submit" value="Qidir" />
+                </form>
+            </div>
+        </div>
+    </section>
+    <!-- Search Result: DevList -->
+    <section class="devlist">
+        <div class="container">
+            <div class="grid grid--three">
+                {% for user in users %}
+                <div class="column card">
+                    <div class="dev">
+                        <a href="{% url 'profile' user.id %}" class="card__body">
+                            <div class="dev__profile">
+                                <img class="avatar avatar--md" src="{{user.image.url}}" alt="image" />
+                                <div class="dev__meta">
+                                    <h3>{{user}}</h3>
+                                    <h5>{{user.info}}</h5>
+                                </div>
+                            </div>
+                            <p class="dev__info">
+                                {{user.bio|slice:":150"}}
+                            </p>
+                            <div class="dev__skills">
+                                {% for skill in user.skill_set.all %}
+                                <span class="tag tag--pill tag--main">
+                                    <small>{{skill}}</small>
+                                </span>
+                                {% endfor %}
+
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </section>
+
+   {% include 'pagination.html' with queryset=users custom_range=custom_range %}
+</main>
+
+{% endblock %}
