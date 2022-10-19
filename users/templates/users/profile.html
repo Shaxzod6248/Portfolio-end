@@ -67,24 +67,11 @@
 
                         <h3 class="devInfo__subtitle">Boshqa malakalar</h3>
                         <div class="devInfo__otherSkills">
+                            {% for tag in project.tag.all %}
                             <span class="tag tag--pill tag--sub tag--lg">
-                                <small>HTML</small>
+                                <small>{{tag}}</small>
                             </span>
-                            <span class="tag tag--pill tag--sub tag--lg">
-                                <small>CSS</small>
-                            </span>
-                            <span class="tag tag--pill tag--sub tag--lg">
-                                <small>Bootstrap</small>
-                            </span>
-                            <span class="tag tag--pill tag--sub tag--lg">
-                                <small>Sqlite</small>
-                            </span>
-                            <span class="tag tag--pill tag--sub tag--lg">
-                                <small>Postgres</small>
-                            </span>
-                            <span class="tag tag--pill tag--sub tag--lg">
-                                <small>MongoDB</small>
-                            </span>
+                            {% endfor %}
                         </div>
                     </div>
                 </div>
