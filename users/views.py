@@ -11,7 +11,7 @@ from django.contrib.auth.models import User
 
 def profiles(request):
     profiles, search_query = searchProfiles(request)
-    custom_range, profiles = paginateProfiles(request, profiles, 3)
+    custom_range, profiles = paginateProfiles(request, profiles, 9)
 
     context = {'users': profiles,
                'search_query': search_query,
