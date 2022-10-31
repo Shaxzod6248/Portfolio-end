@@ -160,7 +160,6 @@ def deleteSkill(request, pk):
     return render(request, 'delete_template.html', context)
 
 
-@login_required(login_url='login')
 def inbox(request):
     print("inbox request.user", request.user)
     profile = request.user.profil
