@@ -99,9 +99,9 @@ def account(request):
 @login_required(login_url='login')
 def account_edit(request):
     profil = request.user.profil
-    form = CustomProfilCreationForm(instance=profil)
+    form = ProfileForm(instance=profil)
     if request.method == "POST":
-        form = CustomProfilCreationForm(request.POST, request.FILES, instance=profil)
+        form = ProfileForm(request.POST, request.FILES, instance=profil)
         if form.is_valid():
             form.save()
             return redirect('account')

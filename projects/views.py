@@ -58,7 +58,6 @@ def project_add(request):
 
 @login_required(login_url='login')
 def project_edit(request, id):
-    profile = request.user.profil
     project = Project.objects.get(id=id)
     form = ProjectForm(instance=project)
     

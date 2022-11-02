@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.forms import ModelForm
 from .models import *
 
+
 class CustomUserCreationForm(UserCreationForm):
     class Meta:
         model = User
@@ -30,6 +31,23 @@ class CustomProfilCreationForm(ModelForm):
 
         for key, field in self.fields.items():
             field.widget.attrs.update({"class": "input input--text"})
+
+
+class ProfileForm(ModelForm):
+    class Meta:
+        model = Profil
+        fields = ['user','name', 'email', 'info',
+                  'location', 'bio', 'image',
+                  'social_github', 'social_facebook',
+                  'social_youtube', 'social_instagram',
+                  ]
+
+    def __init__(self, *args, **kwargs):
+        super(ProfileForm, self).__init__(*args, **kwargs)
+
+        for name, field in self.fields.items():
+            field.widget.attrs.update({'class': 'input'})
+
 
 class MessageForm(ModelForm):
     class Meta:
