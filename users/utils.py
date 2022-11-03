@@ -39,10 +39,11 @@ def searchProfiles(request):
 
     skills = Skill.objects.filter(name__icontains=search_query)
 
-    profiles = Profil.objects.distinct().filter(
+    profiles = Profil.objects.distinct().exclude(user__username='admin').filter(
         Q(name__icontains=search_query) |
         # Q(info__icontains=search_query) |
         Q(skill__in=skills)
     )
+
 
     return profiles, search_query

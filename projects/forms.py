@@ -8,16 +8,16 @@ class ProjectForm(ModelForm):
     class Meta:
         model = Project
         fields = ['title', 'image', 'description',
-                  'demo_link', 'source_link']
+                  'demo_link', 'source_link','tag']
         widgets = {
-            'tags': forms.CheckboxSelectMultiple(),
+            'tag': forms.CheckboxSelectMultiple(),
         }
 
     def __init__(self, *args, **kwargs):
-        super(ModelForm, self).__init__(*args, **kwargs)
+        super(ProjectForm, self).__init__(*args, **kwargs)
 
         for key, field in self.fields.items():
-            field.widget.attrs.update({"class": "input input--text"})
+            field.widget.attrs.update({"class": "input"})
 
 
 class ReviewForm(ModelForm):
