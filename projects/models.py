@@ -36,7 +36,7 @@ class Project(models.Model):
     @property
     def getVoteCount(self):
         reviews = self.project_review.all()
-        upVotes = reviews.filter(value='ijobiy').count()
+        upVotes = reviews.filter(value='+').count()
         totalVotes = reviews.count()
         ratio = (upVotes / totalVotes) * 100
 
@@ -46,10 +46,10 @@ class Project(models.Model):
 
 
 class Review(models.Model):
-    user = models.ForeignKey(Profil, on_delete=models.CASCADE   , null=True, blank=True)
+    user = models.ForeignKey(Profil, on_delete=models.CASCADE, null=True, blank=True)
     VOTE_TYPE = (
-        ("+", "Ijobiy"),
-        ("-", "Salbiy")
+        ('+', 'Ijobiy'),
+        ('-', 'Salbiy')
     )
     body = models.TextField(default='')
     value = models.CharField(max_length=50, choices=VOTE_TYPE)
