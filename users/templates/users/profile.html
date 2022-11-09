@@ -27,7 +27,6 @@
                             </li>
                             {% endif %}
                             {% if user.social_youtube %}
-
                             <li>
                                 <a title="Youtube" href="{{user.social_youtube}}" target="_blank"><i
                                         class="im im-youtube"></i></a>
@@ -54,7 +53,6 @@
                 <div class="devInfo">
                     <h3 class="devInfo__title">Malakalari</h3>
                     <div class="devInfo__skills">
-
                         {% for skill in user.skill_set.all %}
                         <div class="devSkill">
                             <h4 class="devSkill__title">{{skill.name}}</h4>
@@ -63,8 +61,6 @@
                             </p>
                         </div>
                         {% endfor %}
-
-
                         <div class="devInfo__otherSkills">
                             {% for tag in project.tag.all %}
                             <span class="tag tag--pill tag--sub tag--lg">
@@ -96,19 +92,18 @@
                                                 <small>{{tag}}</small>
                                             </span>
                                             {% endfor %}
-
                                         </div>
                                     </div>
                                 </a>
                             </div>
                         </div>
                         {% endfor %}
-
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </main>
+
 
 {% endblock %}

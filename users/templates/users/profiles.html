@@ -7,8 +7,8 @@
         <div class="container container--narrow">
             <div class="hero-section__box">
                 <h2>IT ACADEMY<span> BITIRUVCHILARI </span></h2>
-
             </div>
+
 
             <div class="hero-section__search">
                 <form class="form" action="#" method="get">
@@ -23,7 +23,6 @@
             </div>
         </div>
     </section>
-    <!-- Search Result: DevList -->
     <section class="devlist">
         <div class="container">
             <div class="grid grid--three">
@@ -47,18 +46,16 @@
                                     <small>{{skill}}</small>
                                 </span>
                                 {% endfor %}
-
                             </div>
                         </a>
                     </div>
                 </div>
                 {% endfor %}
-
             </div>
         </div>
     </section>
-
    {% include 'pagination.html' with queryset=users custom_range=custom_range %}
 </main>
+
 
 {% endblock %}
