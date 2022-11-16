@@ -35,14 +35,15 @@ class Project(models.Model):
 
     @property
     def getVoteCount(self):
-        reviews = self.project_review.all()
+        reviews = self.review_set.all()
         upVotes = reviews.filter(value='+').count()
         totalVotes = reviews.count()
         ratio = (upVotes / totalVotes) * 100
 
-        self.vote_total = totalVotes
+        self.vote_count = totalVotes
         self.vote_ratio = ratio
         self.save()
+
 
 
 class Review(models.Model):
@@ -55,7 +56,7 @@ class Review(models.Model):
     value = models.CharField(max_length=50, choices=VOTE_TYPE)
     created = models.DateTimeField(auto_now_add=True)
     id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True, editable=False)
-    project = models.ForeignKey(Project, on_delete=models.CASCADE, null=True, blank=True, related_name="project_review")
+    project = models.ForeignKey(Project, on_delete=models.CASCADE, null=True, blank=True)
 
     class Meta:
         unique_together = [['user', 'project']]

@@ -36,13 +36,16 @@
                 <div class="singleProject__info">
                     {{project.description}}
                 </div>
+
                 <div class="comments">
                     <h3 class="singleProject__subtitle">Baholar</h3>
                     <h5 class="project--rating">
                         {{project.vote_ratio}}% Ijobiy baho ({{project.vote_count}} Ovoz)
                     </h5>
-                    {% if request.user.profil.id in project.reviewers %}
-                    <p>Sizning commentingiz bu project uchun qoldirilib bolingan</p>
+                    {% if request.user.is_authenticated and request.user.profil.id in project.reviewers %}
+                    <p>Sizning commentaryangiz bu proyekt uchun qoldirilib bo'lingan!</p>
+                    {% elif request.user.profil == project.user %}
+                    <h4>Siz o'zingizni loyihangizga comment qoldira olmaysiz!</h4>
 
 
                     {% elif request.user.is_authenticated %}
@@ -51,7 +54,7 @@
                         {% csrf_token %}
                         {% for field in form %}
                         <div class="form__field">
-                            {% if request.user.profil != project.user %}
+                            {% if request.user.is_authenticated and request.user.profil != project.user %}
 
                             <label for="formInput#textarea">{{filed.label}}</label>
                             {{field}}
@@ -59,7 +62,7 @@
                             {% endif %}
                         </div>
                         {% endfor %}
-                        {% if request.user.profil != project.user %}
+                        {% if request.user.is_authenticated and request.user.profil != project.user %}
                         <input class="btn btn--sub btn--lg" type="submit" value="Sumbit" />
                         {% endif %}
                     </form>

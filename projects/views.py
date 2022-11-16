@@ -21,7 +21,6 @@ def project(request, id):
     project = Project.objects.get(id=id)
     tags = project.tag.all()
     form = ReviewForm()
-    print("comment",request.user.profil ,project.user)
     if request.method == 'POST':
         form = ReviewForm(request.POST)
         review = form.save(commit=False)

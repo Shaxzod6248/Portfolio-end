@@ -1,6 +1,6 @@
 from django.conf import settings
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, re_path
 from django.conf.urls.static import static
 
 
@@ -8,7 +8,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("projects/", include("projects.urls")),
     path("", include("users.urls")),
-    path("api/", include("api.urls"))
+    path("api/", include("api.urls")),
 ]
 
 
