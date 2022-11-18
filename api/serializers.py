@@ -23,7 +23,7 @@ class TagSerializer(serializers.ModelSerializer):
 
 class ProjectSerializer(serializers.ModelSerializer):
     user = ProfilSerializer(many=False)
-    tags = TagSerializer(many=True)
+    tag = TagSerializer(many=True)
     reviews = serializers.SerializerMethodField()
 
     class Meta:

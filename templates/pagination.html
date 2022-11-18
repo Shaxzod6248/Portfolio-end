@@ -4,7 +4,7 @@
 
         {% if queryset.has_previous %}
         <li><a href="?page={{queryset.previous_page_number}}" class="btn page-link"
-                data-page="{{queryset.previous_page_number}}">&#10094; Previous</a></li>
+                data-page="{{queryset.previous_page_number}}">&#10094; Предыдущий</a></li>
         {% endif %}
 
 
@@ -19,7 +19,7 @@
 
         {% if queryset.has_next %}
         <li><a href="?page={{queryset.next_page_number}}" class="btn page-link"
-                data-page="{{queryset.next_page_number}}">Next &#10095;</a></li>
+                data-page="{{queryset.next_page_number}}">Следующий &#10095;</a></li>
         {% endif %}
 
 

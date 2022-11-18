@@ -9,9 +9,7 @@ SECRET_KEY = 'django-insecure-uz9j7w6mi6q3j!eihirw#3k0%c36isks6+)(fdc45war%m&=#&
 
 DEBUG = True
 
-ALLOWED_HOSTS = [
-    '*'
-]
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 
 INSTALLED_APPS = [
@@ -26,7 +24,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'storages',
-
+    'drf_yasg',
 ]
 
 MIDDLEWARE = [
@@ -132,6 +130,14 @@ LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_TZ = True
+CORS_ALLOW_ALL_ORIGINS = True
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'YOUR-EMAIL'
+EMAIL_HOST_PASSWORD = 'YOUR-EMAIL-PASSWORD'
+
 STATIC_URL = '/static/'
 MEDIA_URL = '/images/'
 STATICFILES_DIRS = [

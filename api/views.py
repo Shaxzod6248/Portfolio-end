@@ -39,7 +39,7 @@ def projectVote(request, pk):
     data = request.data
 
     review, created = Review.objects.get_or_create(
-        owner=user,
+        user=user,
         project=project,
     )
 

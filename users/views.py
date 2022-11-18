@@ -39,17 +39,17 @@ def login_user(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            messages.success(request, "Tizimga kirdingiz!")
+            messages.success(request, "Вы вошли в систему!")
             return redirect('profiles')
         else:
-            messages.error(request, 'Bunday login va parol mavjud emas')
+            messages.error(request, 'Нет такого логина и пароля')
 
 
     return render(request, "users/login.html")
 
 def logout_user(request):
     logout(request)
-    messages.info(request, 'Tizimdan chiqdingiz')
+    messages.info(request, 'Вы вышли из системы!')
     return redirect('login')
 
 
@@ -57,9 +57,9 @@ def register_user(request):
     form = CustomUserCreationForm()
     for f in form:
         if f.label == "Password":
-            f.label = "Parol"
+            f.label = "Пароль"
         elif f.label == "Password confirmation":
-            f.label = "Parolni tasdiqlash"
+            f.label = "Подтвердить Пароль"
 
     context = {
         "form": form
@@ -75,7 +75,7 @@ def register_user(request):
 
             login(request, user)
 
-            messages.success(request, "Foydalnuvchi ro'yxatdan o'tdi")
+            messages.success(request, "Пользователь зарегистрировался")
             return redirect('profiles')
         else:
             messages.error(request, form.errors)
@@ -123,7 +123,7 @@ def createSkill(request):
             skill = form.save(commit=False)
             skill.user = profile
             skill.save()
-            messages.success(request, 'Muvaffaqiyatli qoshildi')
+            messages.success(request, 'Успешно!')
             return redirect('account')
 
     context = {'form': form}
@@ -140,7 +140,7 @@ def updateSkill(request, pk):
         form = SkillForm(request.POST, instance=skill)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Skill qoshildi')
+            messages.success(request, 'Навык Добавлен')
             return redirect('account')
 
     context = {'form': form}
@@ -153,7 +153,7 @@ def deleteSkill(request, pk):
     skill = profile.skill_set.get(id=pk)
     if request.method == 'POST':
         skill.delete()
-        messages.success(request, 'Ochirildi')
+        messages.success(request, 'Удалено!')
         return redirect('account')
 
     context = {'object': skill}
@@ -202,7 +202,7 @@ def createMessage(request, pk):
                 message.email = sender.email
             message.save()
 
-            messages.success(request, 'Xabar yetkazildi')
+            messages.success(request, 'Сообщение доставлено!')
             return redirect('profile', pk=recipient.id)
 
     context = {'recipient': recipient, 'form': form}

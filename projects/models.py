@@ -49,8 +49,8 @@ class Project(models.Model):
 class Review(models.Model):
     user = models.ForeignKey(Profil, on_delete=models.CASCADE, null=True, blank=True)
     VOTE_TYPE = (
-        ('+', 'Ijobiy'),
-        ('-', 'Salbiy')
+        ('+', 'Положительный'),
+        ('-', 'Отрицательный')
     )
     body = models.TextField(default='')
     value = models.CharField(max_length=50, choices=VOTE_TYPE)

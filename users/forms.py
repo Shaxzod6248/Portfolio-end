@@ -9,9 +9,9 @@ class CustomUserCreationForm(UserCreationForm):
         model = User
         fields = ['first_name', 'last_name', 'email', 'username', 'password1', 'password2']
         labels = {
-            'first_name': "Ism", 
-            'last_name': "Sharif", 
-            'email': "Elektron manzil", 
+            'first_name': "Имя",
+            'last_name': "Фамилия",
+            'email': "Почта",
             'username': "Login"
         }
 

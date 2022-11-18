@@ -11,8 +11,8 @@
             <a href="{% url 'profiles' %}">
                 <img src="{% static 'images/icon.svg' %}" alt="icon" />
             </a>
-            <h3>Shahsiy sahifaga kirish</h3>
-            <p>Assalomu alaykum, hush kelibsiz hurmatli dasturchi</p>
+            <h3>Вход на личную страницу</h3>
+            <p>Здравствуйте уважаемый разработчик</p>
         </div>
 
         <form action="{% url 'login' %}" method="POST" class="form auth__form">
@@ -26,18 +26,18 @@
 
             <!-- Input:Password -->
             <div class="form__field">
-                <label for="formInput#password">Parol: </label>
+                <label for="formInput#password">Пароль: </label>
                 <input class="input input--password" id="formInput#passowrd" type="password" name="password"
                     placeholder="Parolni kiriting" />
             </div>
             <div class="auth__actions">
-                <input class="btn btn--sub btn--lg" type="submit" value="Kirish" />
-                <a href="{% url 'reset_password' %}">Parolni unutdingizmi?</a>
+                <input class="btn btn--sub btn--lg" type="submit" value="Вход" />
+                <a href="{% url 'reset_password' %}">Забыли пароль?</a>
             </div>
         </form>
         <div class="auth__alternative">
-            <p>Shahsiy sahifangiz yo'qmi?</p>
-            <a href="{% url 'register' %}">Ro'yxtdan o'tish</a>
+            <p>Нет личной страницы?</p>
+            <a href="{% url 'register' %}">регистрация</a>
         </div>
     </div>
 </div>

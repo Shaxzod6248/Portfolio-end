@@ -13,8 +13,8 @@
             <a href="{% url 'profiles' %}">
                 <img src="{% static 'images/icon.svg' %}" alt="icon" />
             </a>
-            <h3>Account SignUp</h3>
-            <p>Create a new developer account</p>
+            <h3>Регистрация аккаунта</h3>
+            <p>Создайте новую учетную запись разработчика</p>
         </div>
 
         <form action="{% url 'register' %}" method="POST" class="form auth__form">
@@ -33,7 +33,7 @@
             </div>
         </form>
         <div class="auth__alternative">
-            <p>Already have an Account?</p>
+            <p>Уже есть аккаунт?</p>
             <a href="{% url 'login' %}">Log In</a>
         </div>
     </div>

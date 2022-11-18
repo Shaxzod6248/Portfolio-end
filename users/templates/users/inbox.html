@@ -4,7 +4,7 @@
 {% block content %}
 <main class="inbox my-xl">
   <div class="content-box">
-    <h3 class="inbox__title">Xabarlar(<span>{{unreadCount}}</span>)</h3>
+    <h3 class="inbox__title">Сообщения(<span>{{unreadCount}}</span>)</h3>
     {% if unreadCount > 0 %}
     <ul class="messages">
       {% for message in messageRequests %}

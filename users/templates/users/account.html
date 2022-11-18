@@ -10,7 +10,7 @@
                     <div class="card__body dev">
                         <a class="tag tag--pill tag--main settings__btn" href="{% url 'account_edit' %}"><i
                                 class="im im-edit"></i>
-                            O'zgartirish</a>
+                            Изменять</a>
                         <img class="avatar avatar--xl dev__avatar" src="{{profil.image.url}}" />
                         <h2 class="dev__name">{{profil.name}}</h2>
                         <p class="dev__title">{{profil.info}}</p>
@@ -43,22 +43,21 @@
                             {% endif %}
                         </ul>
                         {% if request.user.profil.id != profil.id %}
-                        <a href="{% url 'create-message' %}" class="btn btn--sub btn--lg">Habar jo'nating</a>
+                        <a href="{% url 'create-message' %}" class="btn btn--sub btn--lg">Послать сообщение</a>
                         {% endif %}
                     </div>
                 </div>
             </div>
             <div class="column column--2of3">
                 <div class="devInfo">
-                    <h3 class="devInfo__title">Men haqimda</h3>
+                    <h3 class="devInfo__title">Обо мне</h3>
                     <p class="devInfo__about">
                         {{profil.bio}}
                     </p>
                 </div>
                 <div class="settings">
-                    <h3 class="settings__title">Malakalari</h3>
-                    <a class="tag tag--pill tag--sub settings__btn tag--lg" href="{% url 'create-skill' %}"><i class="im im-plus"></i>Malaka
-                        qo'shish</a>
+                    <h3 class="settings__title">Квалификация</h3>
+                    <a class="tag tag--pill tag--sub settings__btn tag--lg" href="{% url 'create-skill' %}"><i class="im im-plus"></i>Добавить квалификацию</a>
                 </div>
 
                 <table class="settings__table">
@@ -72,10 +71,10 @@
                         </td>
                         <td class="settings__tableActions">
                             <a class="tag tag--pill tag--main settings__btn" href="{% url 'update-skill' skill.id %}"><i class="im im-edit"></i>
-                                O'zgartirish</a>
+                                Изменять</a>
                             <a class="tag tag--pill tag--main settings__btn" href="{% url 'delete-skill' skill.id %}"><i
                                     class="im im-x-mark-circle-o"></i>
-                                O'chirish</a>
+                                Удалить</a>
                         </td>
                     </tr>
                     {% endfor %}
@@ -83,9 +82,8 @@
                 </table>
 
                 <div class="settings">
-                    <h3 class="settings__title">Loyihalar</h3>
-                    <a class="tag tag--pill tag--sub settings__btn tag--lg" href="{% url 'project_add' %}"><i class="im im-plus"></i> Loyiha
-                        qo'shish</a>
+                    <h3 class="settings__title">Проекты</h3>
+                    <a class="tag tag--pill tag--sub settings__btn tag--lg" href="{% url 'project_add' %}"><i class="im im-plus"></i>Добавить проект</a>
                 </div>
 
                 <table class="settings__table">
@@ -103,10 +101,10 @@
                         </td>
                         <td class="settings__tableActions">
                             <a class="tag tag--pill tag--main settings__btn" href="{% url 'project_edit' project.id %}"><i class="im im-edit"></i>
-                                O'zgartirish</a>
+                                Изменять</a>
                             <a class="tag tag--pill tag--main settings__btn" href="{% url 'project_delete' project.id %}"><i
                                     class="im im-x-mark-circle-o"></i>
-                                O'chirish</a>
+                                Удалить</a>
                         </td>
                     </tr>
                     {% endfor %}
