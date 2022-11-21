@@ -8,6 +8,8 @@ from projects.models import *
 @api_view(['GET'])
 def getRoutes(request):
     routes = [
+        {'GET': '/api/messages'},
+        {'GET': '/api/skills'},
         {'GET': '/api/projects'},
         {'GET': '/api/projects/id'},
         {'POST': '/api/projects/id/vote'},
@@ -21,6 +23,20 @@ def getRoutes(request):
 def getProjects(request):
     projects = Project.objects.all()
     serializer = ProjectSerializer(projects, many=True)
+    return Response(serializer.data)
+
+
+@api_view(['GET'])
+def getSkills(request):
+    skills = Skill.objects.all()
+    serializer = SkillSerializer(skills, many=True)
+    return Response(serializer.data)
+
+
+@api_view(['GET'])
+def getMessages(request):
+    messages = Message.objects.all()
+    serializer = MessageSerializer(messages, many=True)
     return Response(serializer.data)
 
 

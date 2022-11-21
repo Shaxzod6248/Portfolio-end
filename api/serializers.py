@@ -21,6 +21,18 @@ class TagSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class SkillSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Skill
+        fields = '__all__'
+
+
+class MessageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Message
+        fields = '__all__'
+
+
 class ProjectSerializer(serializers.ModelSerializer):
     user = ProfilSerializer(many=False)
     tag = TagSerializer(many=True)

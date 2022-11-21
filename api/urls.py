@@ -15,4 +15,6 @@ urlpatterns = [
     path('projects/<str:pk>/', getProject),
     path('projects/<str:pk>/vote/', projectVote),
     path('remove-tag/', removeTag),
+    path('skills/', getSkills),
+    path('messages/', getMessages),
 ]
