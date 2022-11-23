@@ -3,48 +3,44 @@ from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework.response import Response
 from .serializers import *
 from projects.models import *
+from rest_framework import viewsets
+from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
 
 
-@api_view(['GET'])
-def getRoutes(request):
-    routes = [
-        {'GET': '/api/messages'},
-        {'GET': '/api/skills'},
-        {'GET': '/api/projects'},
-        {'GET': '/api/projects/id'},
-        {'POST': '/api/projects/id/vote'},
-        {'POST': '/api/users/token'},
-        {'POST': '/api/users/token/refresh'},
-    ]
-    return Response(routes)
+class ProfileViewSet(viewsets.ModelViewSet):
+    queryset = Profil.objects.all()
+    serializer_class = ProfilSerializer
+    permission_classes = [IsAuthenticatedOrReadOnly]
 
 
-@api_view(['GET'])
-def getProjects(request):
-    projects = Project.objects.all()
-    serializer = ProjectSerializer(projects, many=True)
-    return Response(serializer.data)
+class ProjectViewSet(viewsets.ModelViewSet):
+    queryset = Project.objects.all()
+    serializer_class = ProjectSerializer
+    permission_classes = [IsAuthenticatedOrReadOnly]
 
 
-@api_view(['GET'])
-def getSkills(request):
-    skills = Skill.objects.all()
-    serializer = SkillSerializer(skills, many=True)
-    return Response(serializer.data)
+class MessageViewSet(viewsets.ModelViewSet):
+    queryset = Message.objects.all()
+    serializer_class = MessageSerializer
+    permission_classes = [IsAuthenticatedOrReadOnly]
 
 
-@api_view(['GET'])
-def getMessages(request):
-    messages = Message.objects.all()
-    serializer = MessageSerializer(messages, many=True)
-    return Response(serializer.data)
+class TagViewSet(viewsets.ModelViewSet):
+    queryset = Tag.objects.all()
+    serializer_class = TagSerializer
+    permission_classes = [IsAuthenticatedOrReadOnly]
 
 
-@api_view(['GET'])
-def getProject(request, pk):
-    project = Project.objects.get(id=pk)
-    serializer = ProjectSerializer(project, many=False)
-    return Response(serializer.data)
+class SkillsViewSet(viewsets.ModelViewSet):
+    queryset = Skill.objects.all()
+    serializer_class = SkillSerializer
+    permission_classes = [IsAuthenticatedOrReadOnly]
+
+
+class ReviewViewSet(viewsets.ModelViewSet):
+    queryset = Review.objects.all()
+    serializer_class = ReviewSerializer
+    permission_classes = [IsAuthenticatedOrReadOnly]
 
 
 @api_view(['POST'])
@@ -65,16 +61,3 @@ def projectVote(request, pk):
 
     serializer = ProjectSerializer(project, many=False)
     return Response(serializer.data)
-
-
-@api_view(['DELETE'])
-def removeTag(request):
-    tagId = request.data['tag']
-    projectId = request.data['project']
-
-    project = Project.objects.get(id=projectId)
-    tag = Tag.objects.get(id=tagId)
-
-    project.tags.remove(tag)
-
-    return Response('Ochirildi')

@@ -41,7 +41,6 @@ def searchProfiles(request):
 
     profiles = Profil.objects.distinct().exclude(user__username='admin').filter(
         Q(name__icontains=search_query) |
-        # Q(info__icontains=search_query) |
         Q(skill__in=skills)
     )
 

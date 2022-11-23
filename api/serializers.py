@@ -3,21 +3,16 @@ from projects.models import *
 from users.models import *
 
 
-class ReviewSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Review
-        fields = '__all__'
-
-
 class ProfilSerializer(serializers.ModelSerializer):
+    # project = ProjectSerializer(many=True)
     class Meta:
         model = Profil
         fields = '__all__'
 
 
-class TagSerializer(serializers.ModelSerializer):
+class MessageSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Tag
+        model = Message
         fields = '__all__'
 
 
@@ -27,9 +22,15 @@ class SkillSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class MessageSerializer(serializers.ModelSerializer):
+class TagSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Message
+        model = Tag
+        fields = '__all__'
+
+
+class ReviewSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Review
         fields = '__all__'
 
 
